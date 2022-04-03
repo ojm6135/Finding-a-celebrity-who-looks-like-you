@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>닮은 연예인 찾기</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1><a href="/">닮은 연예인 찾기</a></h1>
+    <form action="/search/" method="post" enctype="multipart/form-data">
+        <div class="upload-wrap">    
+            <div class="upload-area">
+                <img id="uploaded-img" src={{request.session.img_src}}>
+                <input type="file" name="choose-file" id="choose-file" accept="image/*" onchange="openFile(event)">
+            </div>
+            <div class="button-wrap">
+                <label class="choose-button" for="choose-file">파일 선택</label>
+                <input type="submit" value="찾기" class="submit-button">
+            </div>
+        </div>
+    </form>
+    <div class="result-area">
+        <h2>{{request.session.celebrity}}</h2>
+        <h3>{{request.session.confidence}}</h3>
+    </div>
+</body>
+</html>
+
+<script src="/static/main.js"></script>
